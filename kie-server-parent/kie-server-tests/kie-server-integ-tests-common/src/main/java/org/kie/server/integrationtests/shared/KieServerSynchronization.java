@@ -15,6 +15,7 @@
  */
 package org.kie.server.integrationtests.shared;
 
+import java.time.Instant;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
@@ -333,6 +334,8 @@ public class KieServerSynchronization {
         waitForCondition(() -> {
             List<NodeInstance> nodes = queryClient.findActiveNodeInstances(processInstanceId, 0, 0);
             System.out.println("<<<<<<<<<<<<<<<<<Active node instances: " + nodes);
+            System.out.println("Current time is: " + Instant.now() + " SLA Due Date: " + nodes.get(0).getSlaDueDate());
+            System.out.println("SLA Status: " + nodes.get(0).getSlaCompliance());
             Optional<NodeInstance> ni = nodes.stream()
                     .filter(nInstance -> nInstance.getId().equals(nodeId))
                     .findFirst();
