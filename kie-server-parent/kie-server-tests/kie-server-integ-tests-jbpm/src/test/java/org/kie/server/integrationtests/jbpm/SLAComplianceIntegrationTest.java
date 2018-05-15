@@ -136,7 +136,7 @@ public class SLAComplianceIntegrationTest extends JbpmKieServerBaseIntegrationTe
         assertNodeInstance(taskNode, "Hello", SLA_PENDING);
 
         // Let's wait for SLA violation
-        KieServerSynchronization.waitForNodeInstanceSLAViolated(queryClient, pid, taskNode.getId(), 6_000L);
+        KieServerSynchronization.waitForNodeInstanceSLAViolated(queryClient, pid, taskNode.getId());
 
         assertProcessInstance(pid, STATE_ACTIVE, SLA_NA);
 

@@ -332,6 +332,7 @@ public class KieServerSynchronization {
     public static void waitForNodeInstanceSLAViolated(final QueryServicesClient queryClient, final Long processInstanceId, final Long nodeId, final Long timeOut) throws Exception {
         waitForCondition(() -> {
             List<NodeInstance> nodes = queryClient.findActiveNodeInstances(processInstanceId, 0, 0);
+            System.out.println("<<<<<<<<<<<<<<<<<Active node instances: " + nodes);
             Optional<NodeInstance> ni = nodes.stream()
                     .filter(nInstance -> nInstance.getId().equals(nodeId))
                     .findFirst();
